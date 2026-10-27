@@ -1,0 +1,68 @@
+# Production: three gateways and one shard group of three members, each
+# member on its own node, Ingress with TLS, backups to S3, Prometheus.
+# Tolerates the loss of one gateway and one member of every shard group.
+#
+#   kubectl -n tvenndb create secret generic tvenndb-auth \
+#     --from-literal=admin-password="$(openssl rand -base64 24)" \
+#     --from-literal=cluster-secret="$(openssl rand -hex 32)"
+#   kubectl -n tvenndb create secret generic tvenndb-backup \
+#     --from-literal=AWS_ACCESS_KEY_ID=... --from-literal=AWS_SECRET_ACCESS_KEY=...
+#   helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.1 \
+#     -n tvenndb -f values-ha.yaml
+gateway:
+  replicas: 3
+  antiAffinity: hard
+  storage: { size: 10Gi }
+  resources:
+    requests: { cpu: "1", memory: 1Gi }
+    limits: { memory: 4Gi }
+  ingress:
+    enabled: true
+    className: nginx
+    annotations:
+      # The gateway itself speaks TLS.
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - host: tvenndb.example.com
+        paths: [{ path: /, pathType: Prefix }]
+    tls:
+      - hosts: [tvenndb.example.com]
+        secretName: tvenndb-ingress-tls
+  # The ingress controller sets X-Forwarded-For; sign-in throttling then sees
+  # the real client address.
+  trustProxyHeaders: true
+
+shards:
+  # Add groups to spread graphs over more machines: new partitions go to the
+  # group with the fewest (moving existing ones is a TvennDB Enterprise feature).
+  groups: 1
+  replicas: 3
+  antiAffinity: hard
+  storage:
+    size: 100Gi
+    storageClassName: ""   # a fast SSD class
+  resources:
+    requests: { cpu: "2", memory: 4Gi }
+    limits: { memory: 8Gi }
+
+auth:
+  existingSecret: tvenndb-auth
+
+backup:
+  enabled: true
+  url: s3://my-bucket/tvenndb
+  s3:
+    endpoint: https://s3.eu-north-1.amazonaws.com
+    region: eu-north-1
+    existingSecret: tvenndb-backup
+
+metrics:
+  serviceMonitor:
+    enabled: true
+    labels: { release: prometheus }
+
+monitoring:
+  rules:
+    enabled: true
+    labels: { release: prometheus }

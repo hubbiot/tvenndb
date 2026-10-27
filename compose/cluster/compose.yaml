@@ -1,0 +1,85 @@
+# A replicated TvennDB cluster on one Docker host: one shard group of three
+# members (Raft; survives the loss of one) behind a gateway. It shows how the
+# processes fit together; for production across machines use the Helm chart,
+# which also turns on TLS between every component.
+#
+#   cp ../.env.example .env        # set TVENNDB_ADMIN_PASSWORD and TVENNDB_CLUSTER_SECRET
+#   docker compose up -d
+#
+# Explorer: http://localhost:7000/ui/   (user admin)
+name: tvenndb-cluster
+
+x-shard: &shard
+  image: ${TVENNDB_REGISTRY:-ghcr.io/hubbiot}/tvenndb-shard:${TVENNDB_VERSION:-1.0.1}
+  restart: unless-stopped
+  healthcheck:
+    test: ["CMD", "curl", "-sf", "http://localhost:7001/health"]
+    interval: 10s
+    timeout: 5s
+    retries: 30
+    start_period: 10s
+
+x-shard-env: &shard-env
+  TVENNDB_PORT: "7001"
+  TVENNDB_DATA_DIR: /data
+  TVENNDB_SHARD_GROUP: "0"
+  # The group's members in member order, separated by "," (the gateway's
+  # TVENNDB_SHARDS below separates the same members by "|").
+  TVENNDB_SHARD_PEERS: http://shard-0:7001,http://shard-1:7001,http://shard-2:7001
+  TVENNDB_CLUSTER_SECRET: ${TVENNDB_CLUSTER_SECRET:?set TVENNDB_CLUSTER_SECRET in .env}
+
+services:
+  shard-0:
+    <<: *shard
+    hostname: shard-0
+    environment:
+      <<: *shard-env
+      TVENNDB_SHARD_NAME: shard-0
+    volumes: [shard-0:/data]
+
+  shard-1:
+    <<: *shard
+    hostname: shard-1
+    environment:
+      <<: *shard-env
+      TVENNDB_SHARD_NAME: shard-1
+    volumes: [shard-1:/data]
+
+  shard-2:
+    <<: *shard
+    hostname: shard-2
+    environment:
+      <<: *shard-env
+      TVENNDB_SHARD_NAME: shard-2
+    volumes: [shard-2:/data]
+
+  gateway:
+    image: ${TVENNDB_REGISTRY:-ghcr.io/hubbiot}/tvenndb-gateway:${TVENNDB_VERSION:-1.0.1}
+    restart: unless-stopped
+    hostname: gateway-0
+    ports:
+      - "${TVENNDB_PORT:-7000}:7000"
+    environment:
+      TVENNDB_PORT: "7000"
+      TVENNDB_DATA_DIR: /data
+      # Shard groups are separated by ",", the members of one group by "|".
+      TVENNDB_SHARDS: http://shard-0:7001|http://shard-1:7001|http://shard-2:7001
+      TVENNDB_CLUSTER_SECRET: ${TVENNDB_CLUSTER_SECRET:?set TVENNDB_CLUSTER_SECRET in .env}
+      TVENNDB_ADMIN_PASSWORD: ${TVENNDB_ADMIN_PASSWORD:?set TVENNDB_ADMIN_PASSWORD (at least 12 characters) in .env}
+    volumes: [gateway:/data]
+    depends_on:
+      shard-0: { condition: service_healthy }
+      shard-1: { condition: service_healthy }
+      shard-2: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:7000/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+volumes:
+  shard-0:
+  shard-1:
+  shard-2:
+  gateway:

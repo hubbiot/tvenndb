@@ -1,0 +1,38 @@
+# TvennDB on one machine: a gateway in dev mode with embedded shards, in one
+# container. Fine for development, demos and small workloads; no replication.
+#
+#   cp ../.env.example .env        # then set TVENNDB_ADMIN_PASSWORD
+#   docker compose up -d
+#
+# Explorer: http://localhost:7000/ui/   (user admin)
+# API:      http://localhost:7000/v1/   MCP: http://localhost:7000/mcp
+name: tvenndb
+
+services:
+  tvenndb:
+    image: ${TVENNDB_REGISTRY:-ghcr.io/hubbiot}/tvenndb-gateway:${TVENNDB_VERSION:-1.0.1}
+    command: ["dev"]
+    restart: unless-stopped
+    ports:
+      - "${TVENNDB_PORT:-7000}:7000"
+    environment:
+      TVENNDB_ADMIN_PASSWORD: ${TVENNDB_ADMIN_PASSWORD:?set TVENNDB_ADMIN_PASSWORD (at least 12 characters) in .env}
+      TVENNDB_DATA_DIR: /data
+      TVENNDB_PORT: "7000"
+      # Embedded shard groups; more than one spreads graphs over several stores.
+      TVENNDB_DEV_SHARDS: ${TVENNDB_DEV_SHARDS:-1}
+      # Snapshots and shipped change-log segments of every graph.
+      TVENNDB_BACKUP_URL: file:///backups
+    volumes:
+      - data:/data
+      - backups:/backups
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:7000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+
+volumes:
+  data:
+  backups:

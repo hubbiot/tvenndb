@@ -1,0 +1,356 @@
+/* Hubbiot design system: tokens, fonts and hb- component classes.
+   Copied from the Hubbiot website (hubbiot.com). Fonts are self hosted from ../fonts (SIL OFL 1.1). */
+/* Hubbiot webfonts - self-hosted woff2 (latin) */
+@font-face { font-family: 'Familjen Grotesk'; src: url("../fonts/familjen-grotesk-latin-variable.woff2") format('woff2'); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Familjen Grotesk'; src: url("../fonts/familjen-grotesk-latin-variable-italic.woff2") format('woff2'); font-weight: 400 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Chakra Petch'; src: url("../fonts/chakra-petch-latin-400.woff2") format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Chakra Petch'; src: url("../fonts/chakra-petch-latin-500.woff2") format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Chakra Petch'; src: url("../fonts/chakra-petch-latin-500-italic.woff2") format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Chakra Petch'; src: url("../fonts/chakra-petch-latin-600.woff2") format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Chakra Petch'; src: url("../fonts/chakra-petch-latin-700.woff2") format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Hanken Grotesk'; src: url("../fonts/hanken-grotesk-latin-variable.woff2") format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url("../fonts/jetbrains-mono-latin-variable.woff2") format('woff2'); font-weight: 100 800; font-style: normal; font-display: swap; }
+
+/* Hubbiot colour tokens. Brand tokens are fixed; semantic tokens flip with data-theme="dark". */
+:root, [data-theme="light"] {
+  --deep-teal: #002F31;
+  --teal: #008287;
+  --teal-text: #007479;
+  --teal-tint: #E6F1F1;
+  --teal-tint-border: #CFE4E4;
+  --orange: #FF7400;
+  --orange-tint: #FFD9B3;
+  --orange-text: #B33F00;
+  --deep-teal-raised: #1A4446;
+  --deep-teal-line: #537374;
+  --ink: #231F20;
+  --body-2: #4A4A4A;
+  --paper: #FBF9F6;
+  --white: #FFFFFF;
+  --light: #DBD5D6;
+  --light-2: #A9B6B5;
+  --muted: #6B6B6B;
+  --rule: #E5E1DB;
+  --surface: var(--paper);
+  --surface-card: var(--white);
+  --text: var(--ink);
+  --text-secondary: var(--body-2);
+  --text-muted: var(--muted);
+  --text-brand: var(--teal-text);
+  --text-accent: var(--orange);
+  --text-accent-small: var(--orange-text);
+  --border: var(--rule);
+  --graph-line: var(--teal);
+  --graph-accent: var(--orange);
+}
+[data-theme="dark"] {
+  --surface: var(--deep-teal);
+  --surface-card: var(--deep-teal);
+  --text: var(--light);
+  --text-secondary: var(--light-2);
+  --text-muted: var(--light-2);
+  --text-brand: var(--light);
+  --text-accent: var(--orange);
+  --text-accent-small: var(--orange);
+  --border: var(--teal);
+  --graph-line: var(--teal);
+  --graph-accent: var(--orange);
+}
+
+/* Hubbiot layout, spacing, radius, shadow and stroke tokens */
+:root {
+  --slide-pad-top: 80px;
+  --slide-pad-x: 104px;
+  --slide-pad-bottom: 68px;
+  --logo-height: 30px;
+  --logo-min-height: 24px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --radius-card-sm: 9px;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+  --shadow-screenshot: 0 18px 40px rgba(0,47,49,0.12);
+  --stroke-hairline: 1px;
+  --stroke-graph: 2px;
+}
+
+/* Hubbiot type families and named type styles (slide-* for 1920x1080, doc-* for documents, web, social) */
+:root {
+  --font-display: "Familjen Grotesk", "Hanken Grotesk", system-ui, sans-serif;
+  --font-body: "Familjen Grotesk", system-ui, sans-serif;
+  --font-techno: "Chakra Petch", "Familjen Grotesk", sans-serif;
+  --font-ui: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+.slide-hero { font-family: var(--font-display); font-size: 104px; line-height: 1.02; font-weight: 700; letter-spacing: -0.03em; }
+.slide-statement { font-family: var(--font-display); font-size: 88px; line-height: 1.04; font-weight: 700; letter-spacing: -0.025em; }
+.slide-title { font-family: var(--font-display); font-size: 60px; line-height: 1.06; font-weight: 600; letter-spacing: -0.02em; }
+.slide-stat { font-family: var(--font-display); font-size: 104px; line-height: 1.0; font-weight: 700; letter-spacing: -0.03em; }
+.slide-lead { font-family: var(--font-body); font-size: 30px; line-height: 1.4; font-weight: 400; }
+.slide-body { font-family: var(--font-body); font-size: 22px; line-height: 1.45; font-weight: 400; }
+.slide-eyebrow { font-family: var(--font-techno); font-size: 18px; line-height: 1.2; font-weight: 600; letter-spacing: 0.2em; }
+.slide-footer { font-family: var(--font-ui); font-size: 21px; line-height: 1.3; font-weight: 400; }
+.slide-data { font-family: var(--font-mono); font-size: 21px; line-height: 1.4; font-weight: 400; }
+.doc-display { font-family: var(--font-display); font-size: 48px; line-height: 1.04; font-weight: 700; letter-spacing: -0.025em; }
+.doc-title { font-family: var(--font-display); font-size: 30px; line-height: 1.08; font-weight: 600; letter-spacing: -0.02em; }
+.doc-lead { font-family: var(--font-body); font-size: 18px; line-height: 1.45; font-weight: 400; }
+.doc-body { font-family: var(--font-body); font-size: 15px; line-height: 1.5; font-weight: 400; }
+.doc-eyebrow { font-family: var(--font-techno); font-size: 11px; line-height: 1.2; font-weight: 600; letter-spacing: 0.16em; }
+.doc-caption { font-family: var(--font-ui); font-size: 12px; line-height: 1.4; font-weight: 500; }
+.doc-data { font-family: var(--font-mono); font-size: 13px; line-height: 1.4; font-weight: 400; }
+
+/* Hubbiot component stylesheet. Loads after tokens.css; every colour, font and radius is a token.
+   Components are plain HTML + these hb- classes. They size for documents and screens by default;
+   inside .hb-slide (1920x1080) they switch to the slide scale. Put data-theme="dark" on any
+   container to flip it to the deep-teal ground. */
+
+/* ---------- scale ---------- */
+:root {
+  --hb-eyebrow-size: 11px; --hb-eyebrow-track: .16em;
+  --hb-title-size: 30px; --hb-display-size: 48px;
+  --hb-lead-size: 18px; --hb-body-size: 15px; --hb-caption-size: 12px; --hb-data-size: 13px;
+  --hb-stat-size: 48px; --hb-card-pad: var(--space-3); --hb-gap: var(--space-3);
+  --hb-graph-stroke: 1.5px;
+  --hb-label-size: 11px; --hb-chip-size: 12px; --hb-source-size: 10px; --hb-avatar: 64px; --hb-dot: 9px;
+}
+.hb-slide {
+  --hb-eyebrow-size: 18px; --hb-eyebrow-track: .2em;
+  --hb-title-size: 60px; --hb-display-size: 88px;
+  --hb-lead-size: 30px; --hb-body-size: 22px; --hb-caption-size: 21px; --hb-data-size: 21px;
+  --hb-stat-size: 104px; --hb-card-pad: var(--space-4); --hb-gap: var(--space-4);
+  --hb-graph-stroke: var(--stroke-graph);
+  --hb-label-size: 17px; --hb-chip-size: 18px; --hb-source-size: 15px; --hb-avatar: 120px; --hb-dot: 14px;
+}
+
+/* ---------- base ---------- */
+.hb-root, .hb-slide, .hb-page {
+  background: var(--surface); color: var(--text);
+  font-family: var(--font-body); font-size: var(--hb-body-size); line-height: 1.45;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+.hb-root, .hb-slide, .hb-page, .hb-root *, .hb-slide *, .hb-page * { box-sizing: border-box; }
+
+/* ---------- eyebrow ---------- */
+.hb-eyebrow {
+  display: block; margin: 0;
+  font-family: var(--font-techno); font-weight: 600; font-size: var(--hb-eyebrow-size);
+  line-height: 1.2; letter-spacing: var(--hb-eyebrow-track); text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hb-eyebrow--brand { color: var(--text-brand); }
+/* two-tone eyebrow: the named part in brand colour - "PILLAR 01 · <b>NEXUS</b>" */
+.hb-eyebrow b { font-weight: inherit; color: var(--text-brand); }
+
+/* ---------- mono label ---------- */
+.hb-label { display: block; margin: 0; font-family: var(--font-mono); font-weight: 500; font-size: var(--hb-label-size, 11px); line-height: 1.3; letter-spacing: .14em; text-transform: uppercase; color: var(--text-brand); }
+.hb-label--muted { color: var(--text-muted); }
+.hb-label--accent { color: var(--text-accent-small); }
+
+/* ---------- headline with accent word ---------- */
+.hb-headline {
+  margin: 0; font-family: var(--font-display); font-weight: 600;
+  font-size: var(--hb-title-size); line-height: 1.06; letter-spacing: -0.02em; color: var(--text);
+  text-wrap: balance;
+}
+.hb-headline--statement { font-weight: 700; font-size: var(--hb-display-size); line-height: 1.04; letter-spacing: -0.025em; }
+.hb-slide .hb-headline--hero { font-weight: 700; font-size: 104px; line-height: 1.02; letter-spacing: -0.03em; }
+.hb-headline em { font-style: italic; color: var(--text-accent); }
+.hb-eyebrow + .hb-headline { margin-top: calc(var(--hb-eyebrow-size) * 1.1); }
+
+.hb-lead { margin: 0; font-size: var(--hb-lead-size); line-height: 1.4; color: var(--text-secondary); max-width: 34em; }
+.hb-body { margin: 0; font-size: var(--hb-body-size); line-height: 1.45; color: var(--text-secondary); }
+.hb-data { font-family: var(--font-mono); font-size: var(--hb-data-size); }
+
+/* ---------- card ---------- */
+.hb-card {
+  background: var(--surface-card); border: var(--stroke-hairline) solid var(--border);
+  border-radius: var(--radius-card-sm); padding: var(--hb-card-pad);
+  display: flex; flex-direction: column; gap: calc(var(--hb-card-pad) * .3);
+}
+.hb-card__title { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * 1.3); line-height: 1.15; letter-spacing: -0.01em; color: var(--text); }
+.hb-card__body { margin: 0; font-size: calc(var(--hb-body-size) * .9); line-height: 1.45; color: var(--text-secondary); }
+.hb-card .hb-eyebrow { color: var(--text-brand); }
+.hb-card .hb-chips { margin-top: auto; padding-top: calc(var(--hb-card-pad) * .3); }
+/* a second block inside a card, under a hairline: "HOW HUBBIOT DIFFERS" */
+.hb-card__section { border-top: var(--stroke-hairline) solid var(--border); padding-top: calc(var(--hb-card-pad) * .5); margin-top: calc(var(--hb-card-pad) * .2); display: flex; flex-direction: column; gap: calc(var(--hb-card-pad) * .2); }
+.hb-card__section .hb-card__body { color: var(--text); }
+/* the one card that is Hubbiot / the recommendation: tint fill, orange hairline */
+.hb-card--feature { background: var(--teal-tint); border-color: var(--orange); }
+.hb-card--feature .hb-card__section { border-color: var(--teal-tint-border); }
+.hb-card--feature .hb-card__section .hb-eyebrow { color: var(--orange-text); }
+/* on deep teal a featured card keeps its orange hairline and gets an orange title */
+[data-theme="dark"] .hb-card--feature, [data-theme="dark"].hb-card--feature { background: transparent; }
+[data-theme="dark"] .hb-card--feature .hb-card__title, [data-theme="dark"] .hb-card--feature .hb-eyebrow { color: var(--orange); }
+/* numbered card: a small mono number in teal */
+.hb-card__num { font-family: var(--font-mono); font-weight: 500; font-size: var(--hb-caption-size); line-height: 1; color: var(--text-brand); margin-bottom: calc(var(--hb-card-pad) * .2); }
+
+/* ---------- chips ---------- */
+.hb-chip {
+  display: inline-flex; align-items: center; gap: .5em; white-space: nowrap;
+  font-family: var(--font-mono); font-weight: 500; letter-spacing: .01em;
+  font-size: var(--hb-chip-size, 12px); line-height: 1;
+  padding: .55em 1em; border-radius: var(--radius-pill); border: var(--stroke-hairline) solid transparent;
+}
+.hb-chip--techno { font-family: var(--font-techno); font-weight: 600; letter-spacing: .04em; }
+.hb-chip--neutral { background: var(--teal-tint); border-color: var(--teal-tint-border); color: var(--deep-teal); }
+.hb-chip--included { background: var(--teal); border-color: var(--teal); color: var(--white); }
+.hb-chip--available { background: var(--paper); border-color: var(--rule); color: var(--muted); }
+.hb-chip--premium { background: var(--orange-tint); border-color: var(--orange); color: var(--ink); }
+.hb-chip--dark { background: var(--deep-teal-raised); border-color: var(--deep-teal-line); color: var(--light); }
+.hb-chip--outline { background: transparent; border-color: var(--light); color: var(--light); }
+.hb-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+/* ---------- stat block ---------- */
+.hb-stat { display: flex; flex-direction: column; gap: calc(var(--hb-eyebrow-size) * .6); }
+.hb-stat__value { font-family: var(--font-display); font-weight: 700; font-size: var(--hb-stat-size); line-height: 1; letter-spacing: -0.03em; color: var(--text); font-variant-numeric: tabular-nums; }
+.hb-stat--accent .hb-stat__value { color: var(--text-accent); }
+.hb-stat__label { font-family: var(--font-ui); font-size: var(--hb-caption-size); line-height: 1.35; color: var(--text-muted); max-width: 18em; }
+.hb-stat__bar { height: calc(var(--hb-eyebrow-size) * .35); background: var(--rule); border-radius: var(--radius-pill); overflow: hidden; }
+[data-theme="dark"] .hb-stat__bar { background: var(--deep-teal-raised); }
+.hb-stat__bar > span { display: block; height: 100%; background: var(--graph-line); }
+.hb-stat--accent .hb-stat__bar > span { background: var(--graph-accent); }
+
+/* ---------- footer ---------- */
+.hb-footer {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-ui); font-size: var(--hb-caption-size); line-height: 1.3; color: var(--text-muted);
+}
+.hb-footer__num { font-variant-numeric: tabular-nums; }
+
+/* ---------- logo ---------- */
+.hb-logo { display: block; height: var(--logo-height); width: auto; }
+
+/* ---------- screenshot frame ---------- */
+.hb-shot { margin: 0; display: flex; flex-direction: column; gap: calc(var(--hb-eyebrow-size) * .9); min-width: 0; }
+.hb-shot__frame {
+  background: var(--white); border: var(--stroke-hairline) solid var(--rule); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-screenshot); overflow: hidden; line-height: 0;
+}
+.hb-shot__frame img { display: block; width: 100%; height: auto; }
+
+/* ---------- duotone photo tile ---------- */
+.hb-duo { position: relative; overflow: hidden; border-radius: var(--radius-card); background: var(--deep-teal); color: var(--light); isolation: isolate; }
+.hb-duo--bleed { border-radius: 0; }
+.hb-duo__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hb-duo__shade { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(0,47,49,1) 0%, rgba(0,47,49,.92) 30%, rgba(0,47,49,.55) 58%, rgba(0,47,49,0) 85%); }
+.hb-duo--from-bottom .hb-duo__shade { background: linear-gradient(0deg, rgba(0,47,49,1) 0%, rgba(0,47,49,.9) 30%, rgba(0,47,49,.4) 60%, rgba(0,47,49,0) 85%); }
+.hb-duo__content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: calc(var(--hb-eyebrow-size) * 1); padding: var(--hb-card-pad); }
+.hb-duo .hb-eyebrow { color: var(--light-2); }
+.hb-duo .hb-headline { color: var(--light); }
+.hb-duo .hb-headline em { color: var(--orange); }
+.hb-duo .hb-lead, .hb-duo .hb-body { color: var(--light-2); }
+
+/* ---------- graph motif ---------- */
+.hb-graph { display: block; overflow: visible; }
+.hb-graph .e { stroke: var(--graph-line); stroke-width: var(--hb-graph-stroke); fill: none; stroke-linecap: round; }
+.hb-graph .n { fill: var(--surface); stroke: var(--graph-line); stroke-width: var(--hb-graph-stroke); }
+.hb-graph .n--solid { fill: var(--graph-line); }
+.hb-graph .n--accent { fill: var(--graph-accent); stroke: var(--graph-accent); }
+
+/* ---------- horizontal layer diagram ---------- */
+.hb-layer { position: relative; display: grid; grid-template-columns: repeat(var(--hb-cols, 5), 1fr); gap: calc(var(--hb-gap) * .5); }
+.hb-layer__col {
+  border: var(--stroke-hairline) solid var(--border); border-radius: var(--radius-card-sm); background: var(--surface-card);
+  min-height: calc(var(--hb-body-size) * 13); padding: calc(var(--hb-card-pad) * .6);
+  display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-1);
+}
+.hb-slide .hb-layer__col { min-height: 440px; }
+.hb-layer__col .hb-eyebrow { color: var(--text); }
+.hb-layer__col small { font-family: var(--font-ui); font-size: var(--hb-caption-size); color: var(--text-muted); line-height: 1.3; }
+.hb-layer__band {
+  position: absolute; left: calc(var(--hb-gap) * -.5); right: calc(var(--hb-gap) * -.5); top: 50%; transform: translateY(-50%);
+  background: var(--teal); color: var(--white); border-radius: var(--radius-card-sm);
+  padding: calc(var(--hb-card-pad) * .45) calc(var(--hb-card-pad) * .7);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+}
+.hb-layer__band .hb-eyebrow { color: var(--white); }
+.hb-layer__band span:last-child { font-family: var(--font-ui); font-size: var(--hb-caption-size); color: var(--white); }
+
+/* ---------- table of contents ---------- */
+.hb-toc-part { display: flex; align-items: baseline; gap: .8em; padding-bottom: calc(var(--hb-body-size) * .6); border-bottom: var(--stroke-hairline) solid var(--border); }
+.hb-toc-part .hb-label { font-family: var(--font-techno); font-weight: 600; }
+.hb-toc-part__t { font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * 1.25); color: var(--text); }
+.hb-toc { list-style: none; margin: 0; padding: 0; }
+.hb-toc li { display: grid; grid-template-columns: 2.4em minmax(8em, 1fr) 1.6fr; align-items: baseline; gap: var(--space-2);
+  padding: calc(var(--hb-body-size) * .4) 0; border-bottom: var(--stroke-hairline) solid var(--border); }
+.hb-toc__n { font-family: var(--font-mono); font-size: calc(var(--hb-body-size) * .75); color: var(--text-brand); }
+.hb-toc__t { font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * .95); color: var(--text); }
+.hb-toc__d { font-family: var(--font-ui); font-size: calc(var(--hb-body-size) * .75); color: var(--text-secondary); }
+
+/* ---------- bullet list ---------- */
+.hb-list { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--hb-body-size) * .9); }
+.hb-list li { position: relative; padding-left: 1.1em; font-size: calc(var(--hb-body-size) * .85); line-height: 1.45; color: var(--text-secondary); }
+.hb-list li::before { content: ""; position: absolute; left: 0; top: .5em; width: .42em; height: .42em; border-radius: 50%; background: var(--teal); }
+.hb-list li b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.15em; color: var(--text); }
+.hb-list li strong { font-weight: 600; color: var(--text); }
+
+/* ---------- source line ---------- */
+.hb-source { margin: 0; font-family: var(--font-mono); font-size: var(--hb-source-size, 10px); line-height: 1.4; color: var(--text-muted); }
+.hb-source a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+
+/* ---------- problem / platform ---------- */
+.hb-pp { display: grid; gap: calc(var(--hb-body-size) * .6); }
+.hb-pp p { margin: 0; font-size: var(--hb-body-size); line-height: 1.5; color: var(--text); }
+.hb-pp hr { border: 0; border-top: var(--stroke-hairline) solid var(--border); margin: calc(var(--hb-body-size) * .4) 0; width: 100%; }
+
+/* ---------- panel (tint inset for small diagrams) ---------- */
+.hb-panel { background: var(--teal-tint); border: var(--stroke-hairline) solid var(--teal-tint-border); border-radius: var(--radius-card-sm); padding: var(--hb-card-pad); }
+
+/* ---------- lifecycle timeline ---------- */
+.hb-timeline { position: relative; display: grid; grid-template-columns: repeat(var(--hb-steps, 3), 1fr); padding-top: 1px; }
+.hb-timeline::before { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--hb-dot, 9px) / 2); border-top: 2px solid var(--teal); opacity: .55; }
+.hb-timeline li { list-style: none; position: relative; display: grid; gap: .6em; justify-items: center; text-align: center; font-family: var(--font-mono); font-size: var(--hb-caption-size); color: var(--text-muted); }
+.hb-timeline li:first-child { justify-items: start; text-align: left; }
+.hb-timeline li:last-child { justify-items: end; text-align: right; color: var(--text-brand); }
+.hb-timeline li::before { content: ""; width: var(--hb-dot, 9px); height: var(--hb-dot, 9px); border-radius: 50%; background: var(--teal); }
+.hb-timeline li.is-now::before { background: var(--orange); }
+.hb-timeline { margin: 0; padding-left: 0; }
+
+/* ---------- answer panel: "four systems, four answers" ---------- */
+.hb-answer { background: var(--white); border: var(--stroke-hairline) solid var(--rule); border-radius: var(--radius-card-sm); padding: var(--hb-card-pad); display: grid; gap: calc(var(--hb-card-pad) * .45); }
+.hb-answer__q { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * 1.05); line-height: 1.3; color: var(--ink); }
+.hb-answer__rows { list-style: none; margin: 0; padding: 0; }
+.hb-answer__rows li { display: grid; grid-template-columns: 7.5em 1fr auto; gap: var(--space-2); align-items: baseline; padding: .55em 0; border-top: var(--stroke-hairline) solid var(--rule); font-size: calc(var(--hb-body-size) * .8); color: var(--ink); }
+.hb-answer__rows li > :first-child { font-family: var(--font-mono); color: var(--muted); font-size: .9em; }
+.hb-answer__rows li > :last-child { font-family: var(--font-ui); font-size: .85em; color: var(--orange-text); }
+.hb-answer__note { margin: 0; font-size: calc(var(--hb-body-size) * .8); color: var(--body-2); }
+.hb-answer__a { background: var(--deep-teal); color: var(--light); border-radius: var(--radius-card-sm); padding: calc(var(--hb-card-pad) * .7); display: grid; gap: calc(var(--hb-card-pad) * .4); }
+.hb-answer__a .hb-label { color: var(--orange); display: flex; justify-content: space-between; }
+.hb-answer__a .hb-label span { color: var(--light-2); text-transform: none; letter-spacing: .02em; }
+.hb-answer__a p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * 1.05); color: var(--light); }
+
+/* ---------- team card ---------- */
+.hb-person { display: grid; grid-template-columns: auto 1fr; gap: calc(var(--hb-card-pad) * .6); align-items: start; }
+.hb-person img { width: var(--hb-avatar, 64px); height: var(--hb-avatar, 64px); border-radius: 50%; object-fit: cover; display: block; }
+.hb-person__name { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: calc(var(--hb-body-size) * 1.3); line-height: 1.15; color: var(--text); }
+.hb-person__role { display: block; margin-top: .3em; font-family: var(--font-techno); font-weight: 500; font-size: calc(var(--hb-caption-size) * .85); letter-spacing: .04em; color: var(--text-muted); }
+.hb-person__bio { margin: .7em 0 0; font-size: calc(var(--hb-body-size) * .8); line-height: 1.45; color: var(--text-secondary); }
+
+/* ---------- slide frame (1920x1080) ---------- */
+.hb-slide {
+  position: relative; width: 1920px; height: 1080px; overflow: hidden;
+  padding: var(--slide-pad-top) var(--slide-pad-x) var(--slide-pad-bottom);
+  display: flex; flex-direction: column;
+}
+.hb-slide__top { display: flex; justify-content: space-between; align-items: center; height: var(--logo-height); }
+.hb-slide__body { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.hb-slide > .hb-footer { margin-top: auto; }
+.hb-slide__bg { position: absolute; inset: 0; z-index: 0; }
+.hb-slide__bg ~ * { position: relative; z-index: 1; }
+.hb-shot--crop .hb-shot__frame { aspect-ratio: 16 / 10; }
+.hb-shot--crop .hb-shot__frame img { height: 100%; object-fit: cover; object-position: top left; }
+
+/* full-frame veil for photo slides where text sits across the whole width */
+.hb-duo--veil .hb-duo__shade { background: linear-gradient(90deg, rgba(0,47,49,.94) 0%, rgba(0,47,49,.82) 55%, rgba(0,47,49,.7) 100%); }
+/* full-bleed slide backgrounds: the photo stays dimmed across the whole frame, as in the deck */
+.hb-duo--bleed:not(.hb-duo--veil) .hb-duo__shade { background: linear-gradient(90deg, rgba(0,47,49,.97) 0%, rgba(0,47,49,.9) 35%, rgba(0,47,49,.72) 65%, rgba(0,47,49,.6) 100%); }
+
+
+
+    html, body { margin: 0; background: #FBF9F6; }
+    a { color: #007479; } a:hover { color: #002F31; }
+  

@@ -1,0 +1,31 @@
+name: Bug report
+description: Something in TvennDB, the chart or the examples does not work as documented.
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Image tag or digest, chart version (`GET /health` shows the node).
+    validations:
+      required: true
+  - type: dropdown
+    id: setup
+    attributes:
+      label: How it runs
+      options: [compose/single, compose/cluster, Helm chart, other]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      description: Steps to reproduce, the query or request, the response. Leave out passwords, keys and data you may not share.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Gateway and shard logs around the time (`docker compose logs`, `kubectl logs`).
+      render: text
