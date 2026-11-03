@@ -1,0 +1,213 @@
+TvennDB Free Licence, version 1.0
+
+Copyright 2026 Hubbiot AB, Stockholm, Sweden
+("Hubbiot AB"). All rights not expressly granted in this licence are reserved.
+
+By installing, copying or using the Software you accept this licence. If you
+do so for an organisation, you confirm that you may bind it, and "You" means
+that organisation.
+
+
+1. DEFINITIONS
+
+"Software" means TvennDB Free as distributed by Hubbiot AB: its container
+images, binaries and Helm chart, with the Free Features listed in Schedule A.
+
+"Enterprise Features" means the features listed in Schedule B and any other
+feature that Hubbiot AB offers only under a commercial licence.
+
+"Supporting Materials" means the examples, compose files and Helm values that
+Hubbiot AB publishes for use with the Software.
+
+"Affiliate" means an entity that controls You, that You control, or that is
+under common control with You. "Control" means owning more than 50 percent of
+the votes or having the right to direct the entity's management.
+
+"Production Use" means running the Software to store or serve data that any
+business activity, product, service or operation relies on, including internal
+operations.
+
+"Non-Production Use" means evaluation, development, testing, continuous
+integration, training and demonstration, and proofs of concept that no business
+activity, product, service or operation relies on.
+
+"Small Company" means an organisation that, counted together with all its
+Affiliates, has both:
+  (a) fewer than 50 people working as employees and independent contractors;
+      and
+  (b) less than EUR 10 000 000 in total revenue in its most recently
+      completed financial year.
+
+"Non-Commercial Organisation" means a registered charity, a non-profit
+organisation, an educational institution or a public research organisation,
+when using the Software for its non-commercial activities. Government bodies
+and companies owned by them are not Non-Commercial Organisations.
+
+
+2. WHAT YOU MAY DO
+
+Hubbiot AB grants You a non-exclusive, royalty-free, worldwide,
+non-transferable, non-sublicensable licence to install, run and make the copies
+needed to run and back up the Software, including in a private registry or
+mirror used only by You, for the following uses:
+
+  (a) Non-Production Use, by anyone;
+  (b) Production Use by a Small Company, for its own business, including as a
+      back end of its own applications and online services, as long as its
+      customers do not receive the Software and have no direct access to it;
+  (c) Production Use by a Non-Commercial Organisation; and
+  (d) use by an individual for personal purposes that are not commercial.
+
+Your employees and contractors may use the Software on Your behalf, and You are
+responsible for their use.
+
+This licence covers the Free Features only.
+
+
+3. WHAT REQUIRES A COMMERCIAL LICENCE
+
+Every other use requires a separate commercial licence from Hubbiot AB,
+including:
+
+  (a) Production Use by an organisation that is not a Small Company or a
+      Non-Commercial Organisation; and
+  (b) any use of Enterprise Features.
+
+Commercial licences: hello@hubbiot.com or https://hubbiot.com/tvenndb/
+
+
+4. WHEN YOU STOP BEING A SMALL COMPANY
+
+If You stop being a Small Company, including through growth, a financing or an
+acquisition, You have 90 days from the day You stopped qualifying to obtain a
+commercial licence or end Your Production Use. Non-Production Use may continue.
+
+
+5. RESTRICTIONS
+
+You may not:
+
+  (a) provide the Software, or its functionality, to others as a hosted or
+      managed database or similar service;
+  (b) sell, rent, distribute or sublicense the Software, or deliver it to others
+      as part of a product, appliance, image or managed deployment;
+  (c) run the Software in Production Use for a customer or other third party,
+      unless that party itself has the right to that use under this licence or a
+      commercial licence;
+  (d) modify the Software or create derivative works of it, other than through
+      the configuration options it provides;
+  (e) reverse engineer, decompile or disassemble the Software, except where
+      mandatory law gives You that right;
+  (f) enable, unlock or imitate Enterprise Features, or work around any technical
+      limit or licence check in the Software; or
+  (g) remove or obscure any licence, copyright or trademark notice.
+
+
+6. SUPPORTING MATERIALS
+
+You may copy and adapt the Supporting Materials for Your own use of the Software
+as permitted by this licence.
+
+
+7. THIRD-PARTY COMPONENTS
+
+Third-party components included in the Software are licensed under their own
+terms, listed in NOTICE and THIRD-PARTY-NOTICES. Nothing in this licence limits
+Your rights under those terms.
+
+
+8. YOUR DATA
+
+Hubbiot AB claims no rights in the data You store in or process with the
+Software.
+
+
+9. CONFIRMING ELIGIBILITY
+
+If Hubbiot AB asks in writing, You must confirm in writing within 30 days which
+part of section 2 Your use relies on. Hubbiot AB will keep what You state
+confidential and use it only to administer this licence.
+
+
+10. TRADEMARKS
+
+This licence grants no right to the TvennDB or Hubbiot names or logos, except to
+identify the Software truthfully.
+
+
+11. NO WARRANTY
+
+The Software and the Supporting Materials are provided "as is", without warranty
+of any kind, express or implied, including merchantability, fitness for a
+particular purpose and non-infringement. Hubbiot AB has no obligation under this
+licence to provide support, maintenance or updates.
+
+
+12. LIMITATION OF LIABILITY
+
+To the fullest extent permitted by law, Hubbiot AB is not liable for indirect or
+consequential loss, including lost profit, lost revenue and lost or corrupted
+data, and its total liability under this licence is limited to EUR 100. This
+section does not limit liability for wilful misconduct or gross negligence, or
+any liability that cannot be limited under mandatory law.
+
+
+13. TERMINATION
+
+If You use the Software in breach of this licence, that use is not licensed and
+Your licence ends automatically. If Hubbiot AB notifies You of the breach and You
+end it within 30 days of the notice, Your licence is reinstated. A further breach
+after a reinstatement ends Your licence permanently. When Your licence ends, You
+must stop using the Software and delete Your copies. Sections 8 and 10 to 15
+continue to apply.
+
+
+14. FUTURE RELEASES
+
+Each release of the Software is licensed under the licence that accompanies it.
+Hubbiot AB may release future versions under different terms.
+
+
+15. EXPORT CONTROLS AND SANCTIONS
+
+You are responsible for complying with the export control and sanctions laws that
+apply to Your use of the Software.
+
+
+16. GOVERNING LAW AND DISPUTES
+
+This licence is governed by the laws of Sweden, excluding its conflict of law
+rules and the United Nations Convention on Contracts for the International Sale
+of Goods. The courts of Sweden have exclusive jurisdiction, with Stockholm
+District Court as the first instance. This section does not remove mandatory
+rights a consumer has under the law of their country of residence.
+
+
+SCHEDULE A: FREE FEATURES
+
+  - GQL, the ontology registry, property indexes and named graphs
+  - Vector and full text search inside GQL
+  - History, time travel, diff and dated imports
+  - Sharding, Raft replication and transactions across shards, including adding
+    shard groups for new partitions
+  - Backup and restore to a directory or S3 compatible storage
+  - Users, services, API keys and roles per graph
+  - Membranes: labels a principal cannot see, subtrees it is confined to
+  - MCP endpoint, events and webhooks, import and export
+  - The Explorer, the Helm chart and Prometheus metrics
+
+
+SCHEDULE B: ENTERPRISE FEATURES (NOT INCLUDED)
+
+  - Single sign on
+  - The audit log
+  - Usage reports
+  - Rate and size limits per principal or key
+  - Online rebalancing and partition moves
+
+
+FONTS AND LOGOS IN THIS REPOSITORY
+
+The fonts in design/fonts are under the SIL Open Font License 1.1 (see that
+folder). The TvennDB name and logos are covered by section 10; images/logo says
+how to use them.

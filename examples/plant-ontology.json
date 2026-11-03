@@ -1,0 +1,15 @@
+{
+  "labels": {
+    "Site":  {"key": "code", "properties": {"code": {"type": "string", "required": true}, "name": {"type": "string"}}},
+    "Line":  {"key": "code", "properties": {"code": {"type": "string", "required": true}, "name": {"type": "string"}}},
+    "Robot": {"key": "serial", "properties": {
+      "serial": {"type": "string", "required": true},
+      "status": {"type": "string", "values": ["running", "idle", "maintenance"]},
+      "hours":  {"type": "float", "min": 0, "index": true}}}
+  },
+  "relations": {
+    "HAS_LINE":  {"from": ["Site"], "to": ["Line"],  "containment": true},
+    "HAS_ROBOT": {"from": ["Line"], "to": ["Robot"], "containment": true},
+    "FEEDS":     {"from": ["Robot"], "to": ["Robot"]}
+  }
+}
