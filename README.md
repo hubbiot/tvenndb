@@ -96,8 +96,8 @@ TvennDB Free (the images, binaries and chart) is under the
 [TvennDB Free Licence](LICENSE). In short, it is free of charge:
 
 - for development, testing and evaluation, by anyone;
-- in production, for companies with fewer than 50 people and under
-  EUR 10 million in annual revenue, counted with their affiliates;
+- in production, for companies with no more than 20 people and no more
+  than EUR 5 million in annual revenue, counted with their affiliates;
 - in production, for non-commercial organisations, and for personal use.
 
 Production use at larger companies needs a commercial licence from Hubbiot AB:
