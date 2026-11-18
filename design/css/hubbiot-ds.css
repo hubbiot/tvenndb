@@ -141,7 +141,7 @@
   color: var(--text-muted);
 }
 .hb-eyebrow--brand { color: var(--text-brand); }
-/* two-tone eyebrow: the named part in brand colour - "PILLAR 01 · <b>NEXUS</b>" */
+/* two-tone eyebrow: the named part in brand colour - "PILLAR 01 · <b>HEIM</b>" */
 .hb-eyebrow b { font-weight: inherit; color: var(--text-brand); }
 
 /* ---------- mono label ---------- */

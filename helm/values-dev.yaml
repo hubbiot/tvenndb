@@ -1,7 +1,7 @@
 # A small TvennDB for development and CI: one gateway, one shard, no
 # replication. Data survives restarts (persistent volumes), not node loss.
 #
-#   helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.2 \
+#   helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.3 \
 #     -n tvenndb --create-namespace -f values-dev.yaml
 gateway:
   replicas: 1

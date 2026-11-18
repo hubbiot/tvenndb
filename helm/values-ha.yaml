@@ -7,7 +7,7 @@
 #     --from-literal=cluster-secret="$(openssl rand -hex 32)"
 #   kubectl -n tvenndb create secret generic tvenndb-backup \
 #     --from-literal=AWS_ACCESS_KEY_ID=... --from-literal=AWS_SECRET_ACCESS_KEY=...
-#   helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.2 \
+#   helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.3 \
 #     -n tvenndb -f values-ha.yaml
 gateway:
   replicas: 3

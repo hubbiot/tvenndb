@@ -3,8 +3,8 @@
 The chart is published as an OCI artifact on GitHub's container registry:
 
 ```bash
-helm show values oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.2
-helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.2 \
+helm show values oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.3
+helm install tvenndb oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.3 \
   -n tvenndb --create-namespace -f values-dev.yaml
 ```
 
@@ -46,7 +46,7 @@ Releases list the image digests. Pin them so a node never pulls anything else:
 
 ```yaml
 image:
-  tag: 1.0.2
+  tag: 1.0.3
   gatewayDigest: sha256:...
   shardDigest: sha256:...
 ```
@@ -57,10 +57,10 @@ Copy the images and the chart into your registry, then point the chart at it:
 
 ```bash
 for i in tvenndb-gateway tvenndb-shard; do
-  skopeo copy --all docker://ghcr.io/hubbiot/$i:1.0.2 docker://registry.internal/tvenndb/$i:1.0.2
+  skopeo copy --all docker://ghcr.io/hubbiot/$i:1.0.3 docker://registry.internal/tvenndb/$i:1.0.3
 done
-helm pull oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.2
-helm push tvenndb-1.0.2.tgz oci://registry.internal/tvenndb/charts
+helm pull oci://ghcr.io/hubbiot/charts/tvenndb --version 1.0.3
+helm push tvenndb-1.0.3.tgz oci://registry.internal/tvenndb/charts
 ```
 
 ```yaml
